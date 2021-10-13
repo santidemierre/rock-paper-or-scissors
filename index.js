@@ -2,10 +2,6 @@ const resultado = ['piedra','papel','tijera'];
 var playerScore = 0;
 var computerScore = 0;
 
-// function computerPlay() {
-//     return resultado[Math.floor(Math.random() * resultado.length)] 
-// }
-
 function rondaDeJuego() {
 
     let playerSelection = prompt('Elija: piedra, papel o tijera?');
@@ -56,15 +52,11 @@ function game() {
     for(let i = 0; i < 5; i++) {
         rondaDeJuego();
         console.log(`Puntaje Usuario: ${playerScore}. Puntaje compu: ${computerScore}`);
-    } return (playerScore > computerScore) ? "Ganaste!" : 
-    (playerScore < computerScore) ? "Perdiste!" : 
-    "Empate!"
+    } 
+    return (playerScore > computerScore) ? "Ganaste capo :)!" : 
+    (playerScore < computerScore) ? "Perdiste :(!" : 
+    "Empate, intentalo nuevamente!"
 }
 
-// const playerSelection = prompt('Elija: piedra, papel o tijera?')
-// console.log('Sacaste: ' + playerSelection)
-// const computerSelection = computerPlay()
-// console.log('La computadora saco: ' + computerSelection)
-// console.log(rondaDeJuego(playerSelection,computerSelection))
 const gameContador = game()
 console.log(gameContador)
