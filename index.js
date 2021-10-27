@@ -2,12 +2,19 @@ const resultado = ['piedra','papel','tijera'];
 var playerScore = 0;
 var computerScore = 0;
 
-function rondaDeJuego() {
 
-    let playerSelection = prompt('Elija: piedra, papel o tijera?');
+function rondaDeJuego() {
+    
+    var btn = document.querySelectorAll('button');
+    btn.forEach((button) => {
+        button.addEventListener('click', () => {
+            console.log(playerSelection.id)
+        })
+    })
+    let playerSelection = btn    
     let computerSelection = resultado[Math.floor(Math.random() * resultado.length)] 
     
-    console.log(`Elegiste: ${playerSelection}`)
+    console.log(`Elegiste: ${btn}`)
     console.log(`La computadora eligio: ${computerSelection}`)
 
     let result = ''
@@ -22,23 +29,23 @@ function rondaDeJuego() {
         playerScore++
         result = "Ganaste, piedra le gana a tijera";
         console.log(result)
-    } else if(playerSelection == 'piedra' && computerSelection == 'papel') {
+    } else if(btn == 'piedra' && computerSelection == 'papel') {
         computerScore++
         result = "Perdiste, papel le gana a piedra";
         console.log(result)
-    } else if(playerSelection == 'papel' && computerSelection == 'piedra') {
+    } else if(btn == 'papel' && computerSelection == 'piedra') {
         playerScore++
         result = "Ganaste, papel le gana a piedra";
         console.log(result)
-    } else if(playerSelection == 'papel' && computerSelection == 'tijera') {
+    } else if(btn == 'papel' && computerSelection == 'tijera') {
         computerScore++
         result = "Perdiste, tijera le gana a papel";
         console.log(result)
-    } else if(playerSelection == 'tijera' && computerSelection == 'papel') {
+    } else if(btn == 'tijera' && computerSelection == 'papel') {
         playerScore++
         result = "Ganaste, tijera le gana a papel";
         console.log(result)
-    } else if(playerSelection == 'tijera' && computerSelection == 'piedra') {
+    } else if(btn == 'tijera' && computerSelection == 'piedra') {
         computerScore++
         result = "Perdiste, piedra le gana a tijera";
         console.log(result)
@@ -47,7 +54,7 @@ function rondaDeJuego() {
 
 }
 
-function game() {
+/* function game() {
 
     for(let i = 0; i < 5; i++) {
         rondaDeJuego();
@@ -56,7 +63,9 @@ function game() {
     return (playerScore > computerScore) ? "Ganaste capo :)!" : 
     (playerScore < computerScore) ? "Perdiste :(!" : 
     "Empate, intentalo nuevamente!"
-}
+} */
 
-const gameContador = game()
-console.log(gameContador)
+/* const gameContador = game()
+console.log(gameContador) */
+
+const ronda = rondaDeJuego()
