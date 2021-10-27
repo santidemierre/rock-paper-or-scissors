@@ -1,71 +1,73 @@
-const resultado = ['piedra','papel','tijera'];
-var playerScore = 0;
-var computerScore = 0;
+function cumputerPlay() {
+    let numero = Math.floor(Math.random() * 3);
+    if(numero === 0) {
+        return computerSelection = 'Piedra';
+    } else if(numero === 1) {
+        return computerSelection = 'Papel';
+    } else {
+        return computerSelection = 'Tijera'
+    };
+};
 
 
-function rondaDeJuego() {
+function rondaDeJuego(playerSelection, computerSelection) {  
+
+    if(usuarioPuntos.textContent < 5 && compuPuntos.textContent < 5) {
+        if(playerSelection === computerSelection) {
+            resultados.textContent = 'Empataron!';
+        } else if(playerSelection == 'piedra' && computerSelection == 'tijera') {
+            resultados.textContent = "Ganaste, piedra le gana a tijera";
+            usuarioPuntos.textContent = +usuarioPuntos.textContent + 1; 
+            console.log(resultados)
+        } else if(playerSelection == 'piedra' && computerSelection == 'papel') {
+            resultados.textContent = "Perdiste, papel le gana a piedra";
+            compuPuntos.textContent = +compuPuntos.textContent + 1;
+            console.log(resultados)
+        } else if(playerSelection == 'papel' && computerSelection == 'piedra') {
+            usuarioPuntos.textContent = "Ganaste, papel le gana a piedra";
+            usuarioPuntos.textContent = +usuarioPuntos.textContent + 1;
+            console.log(resultados)
+        } else if(playerSelection == 'papel' && computerSelection == 'tijera') {
+            compuPuntos.textContent = "Perdiste, tijera le gana a papel";
+            compuPuntos.textContent = +compuPuntos.textContent + 1;
+            console.log(resultados)
+        } else if(playerSelection == 'tijera' && computerSelection == 'papel') {
+            usuarioPuntos.textContent = "Ganaste, tijera le gana a papel";
+            usuarioPuntos.textContent = +usuarioPuntos + 1;
+            console.log(resultados)
+        } else if(playerSelection == 'tijera' && computerSelection == 'piedra') {
+            compuPuntos.textContent = "Perdiste, piedra le gana a tijera";
+            compuPuntos.textContent = +compuPuntos + 1;
+            console.log(resultados)
+        } 
+    }
     
-    var btn = document.querySelectorAll('button');
-    btn.forEach((button) => {
-        button.addEventListener('click', () => {
-            console.log(playerSelection.id)
-        })
-    })
-    let playerSelection = btn    
-    let computerSelection = resultado[Math.floor(Math.random() * resultado.length)] 
-    
-    console.log(`Elegiste: ${btn}`)
-    console.log(`La computadora eligio: ${computerSelection}`)
-
-    let result = ''
- 
-    if(playerSelection == 'piedra' && computerSelection == 'piedra') {
-        result = 'Empate';
-    } else if(playerSelection == 'papel' && computerSelection == 'papel') {
-        result = 'Empate';
-    } else if(playerSelection == 'tijera' && computerSelection == 'tijera') {
-        result = 'Empate';
-    } else if(playerSelection == 'piedra' && computerSelection == 'tijera') {
-        playerScore++
-        result = "Ganaste, piedra le gana a tijera";
-        console.log(result)
-    } else if(btn == 'piedra' && computerSelection == 'papel') {
-        computerScore++
-        result = "Perdiste, papel le gana a piedra";
-        console.log(result)
-    } else if(btn == 'papel' && computerSelection == 'piedra') {
-        playerScore++
-        result = "Ganaste, papel le gana a piedra";
-        console.log(result)
-    } else if(btn == 'papel' && computerSelection == 'tijera') {
-        computerScore++
-        result = "Perdiste, tijera le gana a papel";
-        console.log(result)
-    } else if(btn == 'tijera' && computerSelection == 'papel') {
-        playerScore++
-        result = "Ganaste, tijera le gana a papel";
-        console.log(result)
-    } else if(btn == 'tijera' && computerSelection == 'piedra') {
-        computerScore++
-        result = "Perdiste, piedra le gana a tijera";
-        console.log(result)
-    } 
-    return result;
-
+    if(compuPuntos.textContent == 5) {
+        resultadoDelJuego.textContent = 'Perdiste el juego! Intentalo nuevamente...';
+    } else if (usuarioPuntos.textContent == 5) {
+        resultadoDelJuego.textContent = 'Ganaste capo, buen juego!'
+    }
 }
 
-/* function game() {
+// Me traigo los botones del html y le agrego un escuchador de eventos
+const btn = document.querySelectorAll('.playButton');
+btn.forEach((button) => {
+    button.addEventListener('click', (evento) => {
+        cumputerPlay();
+        rondaDeJuego(evento.target.textContent, computerSelection);
+    })
+});
 
-    for(let i = 0; i < 5; i++) {
-        rondaDeJuego();
-        console.log(`Puntaje Usuario: ${playerScore}. Puntaje compu: ${computerScore}`);
-    } 
-    return (playerScore > computerScore) ? "Ganaste capo :)!" : 
-    (playerScore < computerScore) ? "Perdiste :(!" : 
-    "Empate, intentalo nuevamente!"
-} */
+resetButton.addEventListener('click', () => {
+    usuarioPuntos.textContent = 0;
+    compuPuntos.textContent = 0;
+    resultadoDelJuego.textContent = ""; 
+    resultados.textContent = "";
+});
 
-/* const gameContador = game()
-console.log(gameContador) */
-
-const ronda = rondaDeJuego()
+// Me traigo del html la clase donde se van a sumar los puntos del usuario
+const usuarioPuntos = document.querySelector('.usuarioPuntos')
+const compuPuntos = document.querySelector('.compuPuntos')
+// Me traigo del html la clase donde voy computando los resultados individuales:
+const resultados = document.querySelector('.resultados');
+const resultadoDelJuego = document.querySelector('.resultadoDelJuego');

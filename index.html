@@ -13,9 +13,18 @@
         <h1>Comenzemos con el juego</h1>
         <br>
         <div id="contenedor">
-            <button id="piedra" class="btn btn-success">Piedra</button>
-            <button id="papel" class="btn btn-dark">Papel</button>
-            <button id="tijera" class="btn btn-danger">Tijera</button>
+            <button value="piedra" class="btn btn-success playButton">Piedra</button>
+            <button value="papel"  class="btn btn-dark playButton">Papel</button>
+            <button value="tijera"  class="btn btn-danger playButton">Tijera</button>
+        </div>
+        <div id="puntos">
+            <div>Tus puntos:<p id="usuarioPuntos">0</p></div>
+            <div>PC puntos:<p id="compuPuntos">0</p></div>
+        </div>
+        <div>
+            <div id="resultados"></div>
+            <p id="resultadoDelJuego"></p>
+            <button id="resetButton" class="btn btn-danger">Resetear</button>
         </div>
     </div>
     
